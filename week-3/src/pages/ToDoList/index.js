@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, HStack, Input, Button, Text } from "@chakra-ui/react";
+import { Box, HStack, Input, Button, Text, Flex } from "@chakra-ui/react";
 
 const ToDoList = () => {
   const [tasks, setTasks] = useState([]);
@@ -10,6 +10,14 @@ const ToDoList = () => {
       setTasks([...tasks, input]);
       setInput("");
     }
+  };
+
+  const removeTask = (index) => {
+    const copyTasks = [...tasks];
+
+    copyTasks.splice(index, 1);
+
+    setTasks(copyTasks);
   };
 
   return (
@@ -32,7 +40,26 @@ const ToDoList = () => {
         </Button>
       </HStack>
       {tasks.map((input, index) => {
-        return <Text key={index}>{input}</Text>;
+        return (
+          <Flex
+            alignItems="center"
+            justifyContent="space-between"
+            gap={4}
+            borderWidth={1}
+            borderRadius="md"
+            p={4}
+            boxShadow="md"
+          >
+            <Text key={index}>{input}</Text>
+            <Button
+              colorScheme="red"
+              size="md"
+              onClick={() => removeTask(index)}
+            >
+              -
+            </Button>
+          </Flex>
+        );
       })}
     </Box>
   );

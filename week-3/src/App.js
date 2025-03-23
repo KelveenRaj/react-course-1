@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import About from "./pages/About";
+import Counter from "./pages/Counter";
 import Contact from "./pages/Contact";
 import ToDoList from "./pages/ToDoList";
 
@@ -12,7 +12,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/counter" element={<Counter />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/todo-list" element={<ToDoList />} />
       </Routes>
